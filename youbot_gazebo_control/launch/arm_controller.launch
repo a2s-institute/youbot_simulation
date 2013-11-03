@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="ns" default="arm_1"/>
+
+  <rosparam file="$(find youbot_gazebo_control)/config/arm_controller.yaml" ns="$(arg ns)" command="load"/> 
+  
+  <node pkg="controller_manager" type="spawner" name="$(arg ns)_controller_spawner" respawn="false" output="screen"
+    args="$(arg ns)/arm_joint_1_position_controller
+          $(arg ns)/arm_joint_2_position_controller
+          $(arg ns)/arm_joint_3_position_controller
+          $(arg ns)/arm_joint_4_position_controller
+          $(arg ns)/arm_joint_5_position_controller"
+  />
+
+
+</launch>
