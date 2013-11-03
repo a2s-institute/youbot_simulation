@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+  <name>youbot_gazebo_robot</name>
+  <version>0.1.0</version>
+  <description>Launch the KUKA youBot in the Gazebo simulation</description>
+
+  <maintainer email="nowak@locomotec.com">Walter Nowak</maintainer>
+  <maintainer email="blumenthal@locomotec.com">Sebastian Blumenthal</maintainer>
+
+  <license>GPLv3</license>
+
+  <url type="website">http://github.com/mas-group/youbot_simulation</url> -->
+
+  <author email="frederik.hegger@h-brs.de">Frederik Hegger</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+</package>
