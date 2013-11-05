@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <launch>
 
-  <arg name="ns" default="arm_1"/>
+  <arg name="arm_name" default="arm_1"/>
   
   <!-- position controller -->
-  <rosparam file="$(find youbot_gazebo_control)/config/gripper_position_controller.yaml" ns="$(arg ns)" command="load"/> 
+  <rosparam file="$(find youbot_gazebo_control)/config/$(arg arm_name)_gripper_position_controller.yaml" ns="$(arg arm_name)" command="load"/> 
 
-  <node pkg="controller_manager" type="spawner" name="$(arg ns)_gripper_controller_spawner" respawn="false" output="screen"
-    args="$(arg ns)/gripper_finger_joint_l_position_controller
-          $(arg ns)/gripper_finger_joint_r_position_controller"  />
+  <node pkg="controller_manager" type="spawner" name="$(arg arm_name)_gripper_controller_spawner" respawn="false" output="screen"
+    args="$(arg arm_name)/gripper_finger_joint_l_position_controller
+          $(arg arm_name)/gripper_finger_joint_r_position_controller"  />
 
   <!-- velocity controller 
-  <rosparam file="$(find youbot_gazebo_control)/config/gripper_velocity_controller.yaml" ns="$(arg ns)" command="load"/> 
+  <rosparam file="$(find youbot_gazebo_control)/config/$(arg arm_name)_gripper_velocity_controller.yaml" ns="$(arg arm_name)" command="load"/> 
 
-  <node pkg="controller_manager" type="spawner" name="$(arg ns)_gripper_velocity_controller_spawner" respawn="false" output="screen"
-    args="$(arg ns)/gripper_finger_joint_l_velocity_controller
-          $(arg ns)/gripper_finger_joint_r_velocity_controller"  />
+  <node pkg="controller_manager" type="spawner" name="$(arg arm_name)_gripper_velocity_controller_spawner" respawn="false" output="screen"
+    args="$(arg arm_name)/gripper_finger_joint_l_velocity_controller
+          $(arg arm_name)/gripper_finger_joint_r_velocity_controller"  />
   -->
 
 </launch>
