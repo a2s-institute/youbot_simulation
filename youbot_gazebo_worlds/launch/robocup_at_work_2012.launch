@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="false"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="false"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+    <arg name="world_name" value="worlds/empty.world"/>
+  </include>
+
+    <!-- send world urdf to param server -->
+	<param name="world_description" command="$(find xacro)/xacro.py $(find youbot_gazebo_worlds)/urdf/robocup_at_work_2012.urdf" />
+
+    <!-- spawn uploaded world model -->
+	<node pkg="gazebo_ros" type="spawn_model" name="gazebo_world_model" args="-urdf -param world_description -model world -x 0.0 -y 0.0 -z 0.2" respawn="false" output="screen" />    
+
+
+</launch>
