@@ -3,7 +3,8 @@
 
   <arg name="ns" default="arm_1"/>
   
-  <rosparam file="$(find youbot_gazebo_control)/config/gripper_controller.yaml" ns="$(arg ns)" command="load"/> 
+  <!-- position controller -->
+  <rosparam file="$(find youbot_gazebo_control)/config/gripper_position_controller.yaml" ns="$(arg ns)" command="load"/> 
 
   <node pkg="controller_manager" type="spawner" name="$(arg ns)_gripper_controller_spawner" respawn="false" output="screen"
     args="$(arg ns)/gripper_finger_joint_l_position_controller
