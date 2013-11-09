@@ -2,28 +2,15 @@
 <launch>
 
   <arg name="arm_name" default="arm_1"/>
+  <arg name="gripper_name" default="gripper_1"/>
 
-  <!-- position controller -->
-  <rosparam file="$(find youbot_gazebo_control)/config/$(arg arm_name)_position_controller.yaml" ns="$(arg arm_name)" command="load"/> 
+  <!-- upload arm and gripper controller parameters -->
+  <rosparam file="$(find youbot_gazebo_control)/config/$(arg arm_name)_controller.yaml" command="load"/> 
+ 
+  <!-- spawn arm controller -->
+  <node pkg="controller_manager" type="spawner" name="$(arg arm_name)_controller_spawner"  args="$(arg arm_name)_controller" respawn="false" output="screen" />
   
-  <node pkg="controller_manager" type="spawner" name="$(arg arm_name)_position_controller_spawner" respawn="false" output="screen"
-    args="$(arg arm_name)/arm_joint_1_position_controller
-          $(arg arm_name)/arm_joint_2_position_controller
-          $(arg arm_name)/arm_joint_3_position_controller
-          $(arg arm_name)/arm_joint_4_position_controller
-          $(arg arm_name)/arm_joint_5_position_controller"
-  />
-
-  <!-- velocity controller 
-  <rosparam file="$(find youbot_gazebo_control)/config/$(arg arm_name)velocity_controller.yaml" ns="$(arg arm_name)" command="load"/> 
-
-  <node pkg="controller_manager" type="spawner" name="$(arg arm_name)_velocity_controller_spawner" respawn="false" output="screen"
-    args="$(arg arm_name)/arm_joint_1_velocity_controller
-          $(arg arm_name)/arm_joint_2_velocity_controller
-          $(arg arm_name)/arm_joint_3_velocity_controller
-          $(arg arm_name)/arm_joint_4_velocity_controller
-          $(arg arm_name)/arm_joint_5_velocity_controller"
-  />
-  -->
-
+  <!-- spawn gripper controller -->
+  <node pkg="controller_manager" type="spawner" name="$(arg gripper_name)_controller_spawner"  args="$(arg gripper_name)_controller" respawn="false" output="screen" />
+ 
 </launch>

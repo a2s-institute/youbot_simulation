@@ -1,9 +1,0 @@
-gripper_finger_joint_l_velocity_controller:
-  type: effort_controllers/JointVelocityController
-  joint: gripper_finger_joint_l
-  pid: {p: 10.0, i: 10.0, d: 2.0}
-gripper_finger_joint_r_velocity_controller:
-  type: effort_controllers/JointVelocityController
-  joint: gripper_finger_joint_r
-  pid: {p: 10.0, i: 10.0, d: 2.0}
-
