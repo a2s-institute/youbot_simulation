@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- launch world -->
+  <include file="$(find youbot_gazebo_robot)/launch/youbot.launch" >
+    <arg name="robot" value="youbot_with_cam3d" />
+  </include>
+
+</launch>
