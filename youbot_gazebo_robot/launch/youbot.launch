@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <launch>
 
+  <arg name="robot" default="youbot"/>
   <arg name="world" default="robocup_at_work_2012"/>
   <arg name="init_pos_x" default="0.0"/>
   <arg name="init_pos_y" default="0.0"/>
@@ -9,7 +10,7 @@
   <!-- launch world -->
   <include file="$(find youbot_gazebo_worlds)/launch/$(arg world).launch" />
 
-  <param name="robot_description" command="$(find xacro)/xacro.py $(find youbot_description)/robots/youbot.urdf.xacro" />
+  <param name="robot_description" command="$(find xacro)/xacro.py $(find youbot_description)/robots/$(arg robot).urdf.xacro" />
 
   <node pkg="gazebo_ros" type="spawn_model" name="spawn_robot" respawn="false" output="screen"
     args="-param robot_description
