@@ -22,6 +22,9 @@
 
   <!-- launch joint state controller -->
   <include file="$(find youbot_gazebo_control)/launch/joint_state_controller.launch" />
+
+  <!-- launch base controller -->
+  <include file="$(find youbot_gazebo_control)/launch/base_controller.launch" />
   
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
     <param name="publish_frequency" type="double" value="30.0" />
