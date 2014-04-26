@@ -2,7 +2,7 @@
 <package>
   <name>youbot_simulation</name>
   <version>0.1.0</version>
-  <description>Packages to run the KUKA youBot in the Gazebo simulation with ROS</description>
+  <description>Meta packages which holds packages to run the KUKA youBot in the Gazebo simulation with ROS</description>
 
   <maintainer email="nowak@locomotec.com">Walter Nowak</maintainer>
   <maintainer email="blumenthal@locomotec.com">Sebastian Blumenthal</maintainer>
