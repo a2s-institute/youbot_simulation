@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- upload base controller parameters -->
+  <rosparam file="$(find youbot_gazebo_control)/config/base_controller.yaml" command="load" /> 
+ 
+</launch>
