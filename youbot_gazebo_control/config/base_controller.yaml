@@ -1,10 +1,32 @@
-gazebo_ros_control/pid_gains:
-  wheel_joint_fl: {p: 1.0, i: 0.0, d: 1.0}
-  caster_joint_fl: {p: 1.0, i: 0.0, d: 1.0}
-  wheel_joint_fr: {p: 1.0, i: 0.0, d: 1.0}
-  caster_joint_fr: {p: 1.0, i: 0.0, d: 1.0}
-  wheel_joint_bl: {p: 1.0, i: 0.0, d: 1.0}
-  caster_joint_bl: {p: 1.0, i: 0.0, d: 1.0}
-  wheel_joint_br: {p: 1.0, i: 0.0, d: 1.0}
-  caster_joint_br: {p: 1.0, i: 0.0, d: 1.0}
-
+base_caster_joint_fr:
+  type: velocity_controllers/JointVelocityController
+  joint: caster_joint_fr
+ 
+base_caster_joint_fl:
+  type: velocity_controllers/JointVelocityController
+  joint: caster_joint_fl
+  
+base_caster_joint_br:
+  type: velocity_controllers/JointVelocityController
+  joint: caster_joint_br
+  
+base_caster_joint_bl:
+  type: velocity_controllers/JointVelocityController
+  joint: caster_joint_bl
+  
+  
+base_wheel_joint_fr:
+  type: velocity_controllers/JointVelocityController
+  joint: wheel_joint_fr
+  
+base_wheel_joint_fl:
+  type: velocity_controllers/JointVelocityController
+  joint: wheel_joint_fl
+  
+base_wheel_joint_br:
+  type: velocity_controllers/JointVelocityController
+  joint: wheel_joint_br
+  
+base_wheel_joint_bl:
+  type: velocity_controllers/JointVelocityController
+  joint: wheel_joint_bl
