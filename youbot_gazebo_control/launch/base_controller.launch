@@ -4,4 +4,7 @@
   <!-- upload base controller parameters -->
   <rosparam file="$(find youbot_gazebo_control)/config/base_controller.yaml" command="load" /> 
  
+  <!-- spawn base controller -->
+  <node pkg="controller_manager" type="spawner" name="base_controller_spawner" args="base_controller" respawn="false" output="screen" />
+  
 </launch>
