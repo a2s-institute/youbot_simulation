@@ -1,14 +1,19 @@
+gazebo_ros_control: &pid_gains
+  pid_gains: 
+    wheel_joint_fl: {p: 1000.0, i: 0.0, d: 1.0}
+    caster_joint_fl: {p: 1000.0, i: 0.0, d: 1.0}
+    wheel_joint_fr: {p: 1000.0, i: 0.0, d: 1.0}
+    caster_joint_fr: {p: 1000.0, i: 0.0, d: 1.0}
+    wheel_joint_bl: {p: 1000.0, i: 0.0, d: 1.0}
+    caster_joint_bl: {p: 1000.0, i: 0.0, d: 1.0}
+    wheel_joint_br: {p: 1000.0, i: 0.0, d: 1.0}
+    caster_joint_br: {p: 1000.0, i: 0.0, d: 1.0}
+
+
+
 base_controller:
-  pid_gains:
-    wheel_joint_fl: {p: 100.0, i: 0.0, d: 1.0}
-    caster_joint_fl: {p: 100.0, i: 0.0, d: 1.0}
-    wheel_joint_fr: {p: 100.0, i: 0.0, d: 1.0}
-    caster_joint_fr: {p: 100.0, i: 0.0, d: 1.0}
-    wheel_joint_bl: {p: 100.0, i: 0.0, d: 1.0}
-    caster_joint_bl: {p: 100.0, i: 0.0, d: 1.0}
-    wheel_joint_br: {p: 100.0, i: 0.0, d: 1.0}
-    caster_joint_br: {p: 100.0, i: 0.0, d: 1.0}
-    
+  <<: *pid_gains
+  
   type: steered_wheel_base_controller/SteeredWheelBaseController
 
   linear_speed_limit: 1.5
