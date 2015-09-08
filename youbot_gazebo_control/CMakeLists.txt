@@ -44,3 +44,4 @@ install(TARGETS steered_wheel_base_controller
 
 install(DIRECTORY config/ DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/config)
 install(DIRECTORY launch/ DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch)
+install(FILES youbot_gazebo_control_plugins.xml DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
