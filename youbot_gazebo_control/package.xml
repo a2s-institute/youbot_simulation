@@ -15,7 +15,7 @@
 
   <buildtool_depend>catkin</buildtool_depend>
   
-  <build_depend>build_depend>angles</build_depend>
+  <build_depend>angles</build_depend>
   <build_depend>control_toolbox</build_depend>
   <build_depend>controller_interface</build_depend>
   <build_depend>geometry_msgs</build_depend>
