@@ -13,6 +13,7 @@ find_package(catkin REQUIRED
     pluginlib
     realtime_tools
     roscpp
+    roslint
     tf
     urdf
 )
@@ -36,6 +37,9 @@ add_library(steered_wheel_base_controller
 target_link_libraries(steered_wheel_base_controller
   ${catkin_LIBRARIES}
 )
+
+### TESTS
+roslint_cpp()
 
 ### INSTALLS
 install(TARGETS steered_wheel_base_controller

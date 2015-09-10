@@ -26,6 +26,7 @@
   <build_depend>pluginlib</build_depend>
   <build_depend>realtime_tools</build_depend>
   <build_depend>roscpp</build_depend>
+  <build_depend>roslint</build_depend>
   <build_depend>tf</build_depend>
   <build_depend>urdf</build_depend>
 
