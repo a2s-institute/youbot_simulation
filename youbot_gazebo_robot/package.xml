@@ -15,4 +15,11 @@
 
   <buildtool_depend>catkin</buildtool_depend>
 
+  <run_depend>gazebo_ros</run_depend>
+  <run_depend>robot_state_publisher</run_depend>
+  <run_depend>youbot_gazebo_control</run_depend>
+  <run_depend>youbot_gazebo_worlds</run_depend>
+
+  <test_depend>roslaunch</test_depend>
+
 </package>
