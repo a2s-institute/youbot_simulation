@@ -2,6 +2,8 @@
 ///
 /// \brief Steered-wheel base controller
 ///
+/// Copyright (c) 2013-2014 Wunderkammer Laboratory
+///
 /// This file contains the source code for SteeredWheelBaseController,
 /// a base controller for mobile robots. It works with bases that have two or
 /// more independently-steerable driven wheels and zero or more omnidirectional
@@ -113,7 +115,6 @@
 ///     <odometry_frame> to <base_frame>
 ///         Specifies the base frame's pose in the odometry frame.
 //
-// Copyright (c) 2013-2014 Wunderkammer Laboratory
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -323,14 +324,14 @@ public:
 private:
     void initPos(const KDL::Tree& tree, const string& base_link);
 
-    string steer_link_; // Steering link
-    Vector2d pos_;      // Wheel's position in the base link's frame
+    string steer_link_;  // Steering link
+    Vector2d pos_;       // Wheel's position in the base link's frame
 
-    shared_ptr<Joint> steer_joint_;   // Steering joint
+    shared_ptr<Joint> steer_joint_;    // Steering joint
     shared_ptr<Joint> axle_joint_;
-    double theta_steer_;              // Steering joint position
-    double last_theta_steer_desired_; // Last desired steering joint position
-    double last_theta_axle_;          // Last axle joint position
+    double theta_steer_;               // Steering joint position
+    double last_theta_steer_desired_;  // Last desired steering joint position
+    double last_theta_axle_;           // Last axle joint position
 
     double radius_;         // Unit: meter.
     double inv_radius_;     // Inverse of radius_
@@ -682,7 +683,7 @@ shared_ptr<Joint> getJoint(const string& joint_name, const bool is_steer_joint,
     throw runtime_error("No handle for \"" + joint_name + "\" was found.");
 }
 
-} // namespace
+}  // namespace
 
 namespace steered_wheel_base_controller
 {
@@ -707,9 +708,9 @@ public:
 private:
     struct VelCmd     // Velocity command
     {
-        double x_vel;   // X velocity component. Unit: m/s.
-        double y_vel;   // Y velocity component. Unit: m/s.
-        double yaw_vel; // Yaw velocity. Unit: rad/s.
+        double x_vel;    // X velocity component. Unit: m/s.
+        double y_vel;    // Y velocity component. Unit: m/s.
+        double yaw_vel;  // Yaw velocity. Unit: rad/s.
 
         // last_vel_cmd_time is the time at which the most recent velocity command
         // was received.
@@ -776,8 +777,8 @@ private:
 
     double hermite_scale_, hermite_offset_;
 
-    Vector2d last_lin_vel_; // Last linear velocity. Unit: m/s.
-    double last_yaw_vel_;   // Last yaw velocity. Unit: rad/s.
+    Vector2d last_lin_vel_;  // Last linear velocity. Unit: m/s.
+    double last_yaw_vel_;    // Last yaw velocity. Unit: rad/s.
 
     // Velocity command member variables
     VelCmd vel_cmd_;
@@ -805,9 +806,9 @@ private:
     Time last_odom_pub_time_, last_odom_tf_pub_time_;
 };
 
-const string SteeredWheelBaseController::DEF_ROBOT_DESC_NAME =
+const char SteeredWheelBaseController::DEF_ROBOT_DESC_NAME =
     "robot_description";
-const string SteeredWheelBaseController::DEF_BASE_LINK = "base_link";
+const char SteeredWheelBaseController::DEF_BASE_LINK = "base_link";
 const double SteeredWheelBaseController::DEF_CMD_VEL_TIMEOUT = 0.5;
 
 const double SteeredWheelBaseController::DEF_LIN_SPEED_LIMIT = 1;
@@ -824,8 +825,8 @@ const double SteeredWheelBaseController::DEF_ZERO_AXLE_SPEED_ANG = 1.5708;
 const double SteeredWheelBaseController::DEF_WHEEL_DIA_SCALE = 1;
 
 const double SteeredWheelBaseController::DEF_ODOM_PUB_FREQ = 30;
-const string SteeredWheelBaseController::DEF_ODOM_FRAME = "odom";
-const string SteeredWheelBaseController::DEF_BASE_FRAME = "base_link";
+const char SteeredWheelBaseController::DEF_ODOM_FRAME = "odom";
+const char SteeredWheelBaseController::DEF_BASE_FRAME = "base_link";
 const double SteeredWheelBaseController::DEF_INIT_X = 0;
 const double SteeredWheelBaseController::DEF_INIT_Y = 0;
 const double SteeredWheelBaseController::DEF_INIT_YAW = 0;
@@ -1421,7 +1422,7 @@ void SteeredWheelBaseController::compOdometry(const Time& time,
     last_odom_yaw_ = odom_yaw;
 }
 
-} // namespace steered_wheel_base_controller
+}  // namespace steered_wheel_base_controller
 
 PLUGINLIB_EXPORT_CLASS(steered_wheel_base_controller::\
                        SteeredWheelBaseController, controller_interface::ControllerBase)
