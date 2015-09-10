@@ -4,7 +4,12 @@ find_package(catkin REQUIRED)
 
 catkin_package(
   CATKIN_DEPENDS
+    gazebo_ros
+    robot_state_publisher
+    youbot_gazebo_control
+    youbot_gazebo_worlds
 )
+
 
 ### TESTS
 if(CATKIN_ENABLE_TESTING)
