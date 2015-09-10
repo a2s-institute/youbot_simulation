@@ -41,6 +41,13 @@ target_link_libraries(steered_wheel_base_controller
 ### TESTS
 roslint_cpp()
 
+if(CATKIN_ENABLE_TESTING)
+  find_package(roslaunch REQUIRED)
+
+  roslaunch_add_file_check(launch)
+endif()
+
+
 ### INSTALLS
 install(TARGETS steered_wheel_base_controller
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
