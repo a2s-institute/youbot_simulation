@@ -806,9 +806,8 @@ private:
     Time last_odom_pub_time_, last_odom_tf_pub_time_;
 };
 
-const char SteeredWheelBaseController::DEF_ROBOT_DESC_NAME =
-    "robot_description";
-const char SteeredWheelBaseController::DEF_BASE_LINK = "base_link";
+const string SteeredWheelBaseController::DEF_ROBOT_DESC_NAME = "robot_description";  // NOLINT(runtime/string)
+const string SteeredWheelBaseController::DEF_BASE_LINK = "base_link";  // NOLINT(runtime/string)
 const double SteeredWheelBaseController::DEF_CMD_VEL_TIMEOUT = 0.5;
 
 const double SteeredWheelBaseController::DEF_LIN_SPEED_LIMIT = 1;
@@ -825,8 +824,8 @@ const double SteeredWheelBaseController::DEF_ZERO_AXLE_SPEED_ANG = 1.5708;
 const double SteeredWheelBaseController::DEF_WHEEL_DIA_SCALE = 1;
 
 const double SteeredWheelBaseController::DEF_ODOM_PUB_FREQ = 30;
-const char SteeredWheelBaseController::DEF_ODOM_FRAME = "odom";
-const char SteeredWheelBaseController::DEF_BASE_FRAME = "base_link";
+const string SteeredWheelBaseController::DEF_ODOM_FRAME = "odom";  // NOLINT(runtime/string)
+const string SteeredWheelBaseController::DEF_BASE_FRAME = "base_link";  // NOLINT(runtime/string)
 const double SteeredWheelBaseController::DEF_INIT_X = 0;
 const double SteeredWheelBaseController::DEF_INIT_Y = 0;
 const double SteeredWheelBaseController::DEF_INIT_YAW = 0;
