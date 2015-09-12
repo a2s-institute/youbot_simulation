@@ -1423,5 +1423,4 @@ void SteeredWheelBaseController::compOdometry(const Time& time,
 
 }  // namespace steered_wheel_base_controller
 
-PLUGINLIB_EXPORT_CLASS(steered_wheel_base_controller::\
-                       SteeredWheelBaseController, controller_interface::ControllerBase)
+PLUGINLIB_EXPORT_CLASS(steered_wheel_base_controller::SteeredWheelBaseController, controller_interface::ControllerBase)
