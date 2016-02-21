@@ -8,8 +8,5 @@
  
   <!-- spawn arm controller -->
   <node pkg="controller_manager" type="spawner" name="$(arg arm_name)_arm_controller_spawner"  args="$(arg arm_name)/arm_controller" respawn="false" output="screen" />
-  
-  <!-- spawn gripper controller -->
-  <node pkg="controller_manager" type="spawner" name="$(arg arm_name)_gripper_controller_spawner"  args="$(arg arm_name)/gripper_controller" respawn="false" output="screen" />
- 
+   
 </launch>

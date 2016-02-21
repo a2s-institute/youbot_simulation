@@ -1,35 +1,26 @@
 arm_controller:
   type: effort_controllers/JointTrajectoryController
   joints:
-    - arm_2_joint_1
-    - arm_2_joint_2
-    - arm_2_joint_3
-    - arm_2_joint_4
-    - arm_2_joint_5
+    - arm_joint_1
+    - arm_joint_2
+    - arm_joint_3
+    - arm_joint_4
+    - arm_joint_5
   gains:
-    arm_2_joint_1: {p: 2000.0, i: 0.01, d: 0.1}
-    arm_2_joint_2: {p: 2000.0, i: 0.01, d: 0.1}
-    arm_2_joint_3: {p: 2000.0, i: 0.01, d: 0.1}
-    arm_2_joint_4: {p: 2000.0, i: 0.01, d: 0.1}
-    arm_2_joint_5: {p: 2000.0, i: 0.01, d: 0.1}
+    arm_joint_1: {p: 1000.0, i: 0.01, d: 0.1}
+    arm_joint_2: {p: 1000.0, i: 0.01, d: 0.1}
+    arm_joint_3: {p: 1000.0, i: 0.01, d: 0.1}
+    arm_joint_4: {p: 1000.0, i: 0.01, d: 0.1}
+    arm_joint_5: {p: 1000.0, i: 0.01, d: 0.1}
   constraints:
     goal_time: 0.6
-    arm_2_joint_1:
+    arm_joint_1:
       goal: 0.1
-    arm_2_joint_2:
+    arm_joint_2:
       goal: 0.1
-    arm_2_joint_3:
+    arm_joint_3:
       goal: 0.1
-    arm_2_joint_4:
+    arm_joint_4:
       goal: 0.1
-    arm_2_joint_5:
+    arm_joint_5:
       goal: 0.1
-
-gripper_controller:
-  type: effort_controllers/JointTrajectoryController
-  joints:
-    - gripper_2_finger_joint_l
-    - gripper_2_finger_joint_r
-  gains:
-    gripper_2_finger_joint_l: {p: 40.0, d: 1.0}
-    gripper_2_finger_joint_r: {p: 40.0, d: 1.0}
