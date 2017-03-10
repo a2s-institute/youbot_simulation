@@ -149,7 +149,8 @@
 #include <Eigen/Core>
 #include <Eigen/Geometry>
 #include <Eigen/SVD>
-
+#include <controller_interface/multi_interface_controller.h>
+#include <controller_interface/controller.h>
 #include <geometry_msgs/Twist.h>
 #include <hardware_interface/joint_command_interface.h>
 
@@ -171,6 +172,8 @@ using std::string;
 
 using boost::math::sign;
 using boost::shared_ptr;
+
+using controller_interface::ControllerBase;
 
 using Eigen::Affine2d;
 using Eigen::Matrix2d;
@@ -194,16 +197,15 @@ using ros::Time;
 
 using XmlRpc::XmlRpcValue;
 
-namespace
-{
+namespace {
 
-void addClaimedResources(hardware_interface::HardwareInterface *const hw_iface,
-                         set<string>& claimed_resources)
-{
-    if (hw_iface == NULL)
-        return;
-    const set<string> claims = hw_iface->getClaims();
-    claimed_resources.insert(claims.begin(), claims.end());
+void addClaimedResources(hardware_interface::HardwareInterface *const hw_iface, controller_interface::ControllerBase::ClaimedResources& claimed_resources){
+    if (hw_iface == NULL) return;
+    //const set<string> claims = hw_iface->getClaims();
+    //claimed_resources.insert(claims.begin(), claims.end());
+    //hardware_interface::InterfaceResources iface_res( steered_wheel_base_controller::SteeredWheelBaseController::getHardwareInterfaceType(), hw_iface->getClaims());
+    hardware_interface::InterfaceResources iface_res( "", hw_iface->getClaims());
+    claimed_resources.assign(1, iface_res);
     hw_iface->clearClaims();
 }
 
@@ -685,8 +687,8 @@ shared_ptr<Joint> getJoint(const string& joint_name, const bool is_steer_joint,
 
 }  // namespace
 
-namespace steered_wheel_base_controller
-{
+
+namespace steered_wheel_base_controller{
 
 // Steered-wheel base controller
 class SteeredWheelBaseController : public controller_interface::ControllerBase
@@ -697,7 +699,7 @@ public:
     // These are not real-time safe.
     virtual bool initRequest(RobotHW *const robot_hw,
                              NodeHandle& root_nh, NodeHandle& ctrlr_nh,
-                             set<string>& claimed_resources);
+                             ClaimedResources& claimed_resources);
     virtual string getHardwareInterfaceType() const;
 
     // These are real-time safe.
@@ -841,7 +843,7 @@ SteeredWheelBaseController::SteeredWheelBaseController()
 bool SteeredWheelBaseController::initRequest(RobotHW *const robot_hw,
         NodeHandle& /* root_nh */,
         NodeHandle& ctrlr_nh,
-        set<string>& claimed_resources)
+        ClaimedResources& claimed_resources)
 {
     if (state_ != CONSTRUCTED)
     {
