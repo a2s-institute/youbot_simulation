@@ -201,9 +201,7 @@ namespace {
 
 void addClaimedResources(hardware_interface::HardwareInterface *const hw_iface, controller_interface::ControllerBase::ClaimedResources& claimed_resources){
     if (hw_iface == NULL) return;
-    //const set<string> claims = hw_iface->getClaims();
-    //claimed_resources.insert(claims.begin(), claims.end());
-    //hardware_interface::InterfaceResources iface_res( steered_wheel_base_controller::SteeredWheelBaseController::getHardwareInterfaceType(), hw_iface->getClaims());
+
     hardware_interface::InterfaceResources iface_res( "", hw_iface->getClaims());
     claimed_resources.assign(1, iface_res);
     hw_iface->clearClaims();
