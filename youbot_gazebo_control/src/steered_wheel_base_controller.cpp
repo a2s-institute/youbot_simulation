@@ -199,11 +199,12 @@ using XmlRpc::XmlRpcValue;
 
 namespace {
 
-void addClaimedResources(hardware_interface::HardwareInterface *const hw_iface, controller_interface::ControllerBase::ClaimedResources& claimed_resources){
+void addClaimedResources(hardware_interface::HardwareInterface *const hw_iface, std::string hw_iface_name, controller_interface::ControllerBase::ClaimedResources& claimed_resources){
     if (hw_iface == NULL) return;
 
-    hardware_interface::InterfaceResources iface_res( "", hw_iface->getClaims());
-    claimed_resources.assign(1, iface_res);
+    hardware_interface::InterfaceResources iface_res(hw_iface_name, hw_iface->getClaims());
+    if (!iface_res.resources.empty())
+      claimed_resources.push_back(iface_res);
     hw_iface->clearClaims();
 }
 
@@ -874,9 +875,9 @@ bool SteeredWheelBaseController::initRequest(RobotHW *const robot_hw,
     }
 
     claimed_resources.clear();
-    addClaimedResources(eff_joint_iface, claimed_resources);
-    addClaimedResources(pos_joint_iface, claimed_resources);
-    addClaimedResources(vel_joint_iface, claimed_resources);
+    addClaimedResources(eff_joint_iface, "hardware_interface::EffortJointInterface",   claimed_resources);
+    addClaimedResources(pos_joint_iface, "hardware_interface::PositionJointInterface", claimed_resources);
+    addClaimedResources(vel_joint_iface, "hardware_interface::VelocityJointInterface", claimed_resources);
 
     state_ = INITIALIZED;
     return true;
