@@ -158,7 +158,7 @@
 #include <kdl_parser/kdl_parser.hpp>
 
 #include <nav_msgs/Odometry.h>
-#include <pluginlib/class_list_macros.h>
+#include <pluginlib/class_list_macros.hpp>
 #include <realtime_tools/realtime_publisher.h>
 
 #include <tf/tfMessage.h>
@@ -239,7 +239,7 @@ public:
 
 protected:
     Joint(const JointHandle& handle,
-          const shared_ptr<const urdf::Joint> urdf_joint);
+          const urdf::JointConstSharedPtr urdf_joint);
 
     JointHandle handle_;
     const double lower_limit_, upper_limit_;  // Unit: radian
@@ -251,7 +251,7 @@ class PosJoint : public Joint
 {
 public:
     PosJoint(const JointHandle& handle,
-             const shared_ptr<const urdf::Joint> urdf_joint) :
+             const urdf::JointConstSharedPtr urdf_joint) :
         Joint(handle, urdf_joint) {}
 
     virtual void init();
@@ -268,7 +268,7 @@ class VelJoint : public Joint
 {
 public:
     VelJoint(const JointHandle& handle,
-             const shared_ptr<const urdf::Joint> urdf_joint) :
+             const urdf::JointConstSharedPtr urdf_joint) :
         Joint(handle, urdf_joint) {}
 
     virtual void init()
@@ -284,7 +284,7 @@ class PIDJoint : public Joint
 {
 public:
     PIDJoint(const JointHandle& handle,
-             const shared_ptr<const urdf::Joint> urdf_joint,
+             const urdf::JointConstSharedPtr urdf_joint,
              const NodeHandle& ctrlr_nh);
 
     virtual void init();
@@ -339,7 +339,7 @@ private:
 };
 
 Joint::Joint(const JointHandle& handle,
-             const shared_ptr<const urdf::Joint> urdf_joint) :
+             const urdf::JointConstSharedPtr urdf_joint) :
     handle_(handle), lower_limit_(urdf_joint->limits->lower),
     upper_limit_(urdf_joint->limits->upper), check_joint_limit_(true)
 {
@@ -394,7 +394,7 @@ void VelJoint::setVel(const double vel, const Duration& /* period */)
 }
 
 PIDJoint::PIDJoint(const JointHandle& handle,
-                   const shared_ptr<const urdf::Joint> urdf_joint,
+                   const urdf::JointConstSharedPtr urdf_joint,
                    const NodeHandle& ctrlr_nh) :
     Joint(handle, urdf_joint), type_(urdf_joint->type)
 {
@@ -604,8 +604,7 @@ shared_ptr<Joint> getJoint(const string& joint_name, const bool is_steer_joint,
 
         if (handle_found)
         {
-            const shared_ptr<const urdf::Joint> urdf_joint =
-                urdf_model.getJoint(joint_name);
+            const urdf::JointConstSharedPtr urdf_joint = urdf_model.getJoint(joint_name);
             if (urdf_joint == NULL)
             {
                 throw runtime_error("\"" + joint_name +
@@ -633,8 +632,7 @@ shared_ptr<Joint> getJoint(const string& joint_name, const bool is_steer_joint,
 
         if (handle_found)
         {
-            const shared_ptr<const urdf::Joint> urdf_joint =
-                urdf_model.getJoint(joint_name);
+            const urdf::JointConstSharedPtr urdf_joint = urdf_model.getJoint(joint_name);
             if (urdf_joint == NULL)
             {
                 throw runtime_error("\"" + joint_name +
@@ -662,8 +660,7 @@ shared_ptr<Joint> getJoint(const string& joint_name, const bool is_steer_joint,
 
         if (handle_found)
         {
-            const shared_ptr<const urdf::Joint> urdf_joint =
-                urdf_model.getJoint(joint_name);
+            const urdf::JointConstSharedPtr urdf_joint = urdf_model.getJoint(joint_name);
             if (urdf_joint == NULL)
             {
                 throw runtime_error("\"" + joint_name +
@@ -1045,8 +1042,7 @@ init(EffortJointInterface *const eff_joint_iface,
             throw runtime_error("An invalid steering joint was specified.");
         }
         const string steer_joint_name = xml_steer_joint;
-        const shared_ptr<const urdf::Joint> steer_joint =
-            urdf_model.getJoint(steer_joint_name);
+        const urdf::JointConstSharedPtr steer_joint = urdf_model.getJoint(steer_joint_name);
         if (steer_joint == NULL)
         {
             throw runtime_error("Steering joint \"" + steer_joint_name +
