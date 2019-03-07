@@ -33,6 +33,8 @@
   <run_depend>controller_interface</run_depend>
   <run_depend>controller_manager</run_depend>
   <run_depend>hardware_interface</run_depend>
+  <run_depend>joint_state_controller</run_depend>
+  <run_depend>joint_trajectory_controller</run_depend>
 
   <test_depend>roslaunch</test_depend>
   
