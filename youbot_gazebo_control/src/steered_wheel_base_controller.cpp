@@ -833,7 +833,7 @@ const Vector2d SteeredWheelBaseController::X_DIR = Vector2d::UnitX();
 
 SteeredWheelBaseController::SteeredWheelBaseController()
 {
-    state_ = CONSTRUCTED;
+    state_ = ControllerState::CONSTRUCTED;
 }
 
 bool SteeredWheelBaseController::initRequest(RobotHW *const robot_hw,
@@ -841,7 +841,7 @@ bool SteeredWheelBaseController::initRequest(RobotHW *const robot_hw,
         NodeHandle& ctrlr_nh,
         ClaimedResources& claimed_resources)
 {
-    if (state_ != CONSTRUCTED)
+    if (state_ != ControllerState::CONSTRUCTED)
     {
         ROS_ERROR("The steered-wheel base controller could not be created.");
         return false;
@@ -876,7 +876,7 @@ bool SteeredWheelBaseController::initRequest(RobotHW *const robot_hw,
     addClaimedResources(pos_joint_iface, "hardware_interface::PositionJointInterface", claimed_resources);
     addClaimedResources(vel_joint_iface, "hardware_interface::VelocityJointInterface", claimed_resources);
 
-    state_ = INITIALIZED;
+    state_ = ControllerState::INITIALIZED;
     return true;
 }
 
