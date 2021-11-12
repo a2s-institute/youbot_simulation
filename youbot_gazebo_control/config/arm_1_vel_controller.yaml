@@ -1,0 +1,24 @@
+joint_1_velocity:
+    type: "effort_controllers/JointVelocityController"
+    joint: arm_joint_1
+    pid: {p: 30.0, i: 0.0, d: 0.0}
+
+joint_2_velocity:
+    type: "effort_controllers/JointVelocityController"
+    joint: arm_joint_2
+    pid: {p: 30.0, i: 0.0, d: 0.0}
+
+joint_3_velocity:
+    type: "effort_controllers/JointVelocityController"
+    joint: arm_joint_3
+    pid: {p: 30.0, i: 0.0, d: 0.0}
+
+joint_4_velocity:
+    type: "effort_controllers/JointVelocityController"
+    joint: arm_joint_4
+    pid: {p: 30.0, i: 0.0, d: 0.0}
+
+joint_5_velocity:
+    type: "effort_controllers/JointVelocityController"
+    joint: arm_joint_5
+    pid: {p: 30.0, i: 0.0, d: 0.0}
