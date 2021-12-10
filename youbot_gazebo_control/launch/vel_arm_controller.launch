@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="arm_name" default="arm_1"/>
+
+    <!-- upload arm and gripper controller parameters -->
+    <rosparam file="$(find youbot_gazebo_control)/config/$(arg arm_name)_vel_controller.yaml"
+        command="load" ns="$(arg arm_name)"/> 
+
+    <!-- spawn vel arm controller -->
+    <node pkg="controller_manager" type="spawner" name="$(arg arm_name)_joint_controller_spawner"
+          args="$(arg arm_name)/joint_1_velocity
+                $(arg arm_name)/joint_2_velocity
+                $(arg arm_name)/joint_3_velocity
+                $(arg arm_name)/joint_4_velocity
+                $(arg arm_name)/joint_5_velocity"
+          respawn="false" output="screen" />
+
+    <node pkg="youbot_gazebo_control" type="arm_joint_vel_convertor"
+          name="$(arg arm_name)_joint_joint_vel_convertor"/>
+
+</launch>

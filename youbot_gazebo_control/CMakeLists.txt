@@ -7,6 +7,7 @@ find_package(catkin REQUIRED
     control_toolbox
     controller_interface
     geometry_msgs
+    brics_actuator
     hardware_interface
     kdl_parser
     nav_msgs
@@ -36,6 +37,13 @@ add_library(steered_wheel_base_controller
 )
 target_link_libraries(steered_wheel_base_controller
   ${catkin_LIBRARIES}
+)
+
+add_executable(arm_joint_vel_convertor
+    src/arm_joint_vel_convertor.cpp
+)
+target_link_libraries(arm_joint_vel_convertor
+    ${catkin_LIBRARIES}
 )
 
 ### TESTS

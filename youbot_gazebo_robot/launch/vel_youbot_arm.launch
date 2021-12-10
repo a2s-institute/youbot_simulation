@@ -1,23 +1,24 @@
 <?xml version="1.0"?>
 <launch>
 
-  <arg name="world" default="robocup_at_work_2012"/>
-  <arg name="init_pos_x" default="1.7"/>
-  <arg name="init_pos_y" default="0.0"/>
-  <arg name="init_pos_z" default="0.2"/>
-  <arg name="use_traj_ctrl" default="true" />
-
   <!-- launch world -->
-  <include file="$(find youbot_gazebo_worlds)/launch/$(arg world).launch" />
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+    <arg name="world_name" value="worlds/empty.world"/>
+  </include>
 
   <param name="robot_description" command="$(find xacro)/xacro.py $(find youbot_description)/robots/youbot_arm_only.urdf.xacro" />
 
   <node pkg="gazebo_ros" type="spawn_model" name="spawn_robot" respawn="false" output="screen"
     args="-param robot_description
           -urdf
-          -x $(arg init_pos_x)
-          -y $(arg init_pos_y)
-          -z $(arg init_pos_z)
+          -x 0.0
+          -y 0.0
+          -z 0.0
           -model youbot">
   </node>
 
@@ -25,12 +26,7 @@
   <include file="$(find youbot_gazebo_control)/launch/joint_state_controller.launch" />
 
   <!-- launch arm controller -->
-  <group if="$(arg use_traj_ctrl)">
-    <include file="$(find youbot_gazebo_control)/launch/arm_controller.launch" />
-  </group>
-  <group unless="$(arg use_traj_ctrl)">
-    <include file="$(find youbot_gazebo_control)/launch/vel_arm_controller.launch" />
-  </group>
+  <include file="$(find youbot_gazebo_control)/launch/vel_arm_controller.launch" />
   
   <!-- launch gripper controller -->
   <include file="$(find youbot_gazebo_control)/launch/gripper_controller.launch" />
