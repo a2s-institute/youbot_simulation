@@ -5,6 +5,7 @@
   <arg name="init_pos_x" default="1.7"/>
   <arg name="init_pos_y" default="0.0"/>
   <arg name="init_pos_z" default="0.2"/>
+  <arg name="use_traj_ctrl" default="true" />
 
   <!-- launch world -->
   <include file="$(find youbot_gazebo_worlds)/launch/$(arg world).launch" />
@@ -24,7 +25,12 @@
   <include file="$(find youbot_gazebo_control)/launch/joint_state_controller.launch" />
 
   <!-- launch arm controller -->
-  <include file="$(find youbot_gazebo_control)/launch/arm_controller.launch" />
+  <group if="$(arg use_traj_ctrl)">
+    <include file="$(find youbot_gazebo_control)/launch/arm_controller.launch" />
+  </group>
+  <group unless="$(arg use_traj_ctrl)">
+    <include file="$(find youbot_gazebo_control)/launch/vel_arm_controller.launch" />
+  </group>
   
   <!-- launch gripper controller -->
   <include file="$(find youbot_gazebo_control)/launch/gripper_controller.launch" />

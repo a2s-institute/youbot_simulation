@@ -28,6 +28,9 @@
   <!-- launch arm controller -->
   <include file="$(find youbot_gazebo_control)/launch/vel_arm_controller.launch" />
   
+  <!-- launch gripper controller -->
+  <include file="$(find youbot_gazebo_control)/launch/gripper_controller.launch" />
+  
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
     <param name="publish_frequency" type="double" value="30.0" />
   </node>
