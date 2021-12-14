@@ -16,7 +16,7 @@
   </include>
 
     <!-- send world urdf to param server -->
-	<param name="world_description" command="$(find xacro)/xacro.py $(find youbot_gazebo_worlds)/urdf/tower_of_hanoi.urdf" />
+	<param name="world_description" command="xacro $(find youbot_gazebo_worlds)/urdf/tower_of_hanoi.urdf" />
 
     <!-- spawn uploaded world model -->
 	<node pkg="gazebo_ros" type="spawn_model" name="gazebo_world_model" args="-urdf -param world_description -model world -x 1.0 -y 0.0 -z 0.2" respawn="false" output="screen" />    
