@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>youbot_gazebo_robot</name>
+  <name>youbot_gazebo_models</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
   <maintainer email="hari.tungala@smail.inf.h-brs.de">Vamsi</maintainer>
