@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(youbot_gazebo_worlds)
+project(youbot_gazebo_models)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -26,8 +26,7 @@ endif()
 
 install(
   DIRECTORY
-    launch
-    urdf
+    models
   DESTINATION
     share/${PROJECT_NAME}/
 )

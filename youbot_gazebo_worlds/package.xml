@@ -1,22 +1,23 @@
 <?xml version="1.0"?>
-<package>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
   <name>youbot_gazebo_worlds</name>
   <version>0.0.0</version>
-  <description>Gazebo worlds configurations</description>
+  <description>TODO: Package description</description>
+  <maintainer email="hari.tungala@smail.inf.h-brs.de">optimus</maintainer>
+  <license>TODO: License declaration</license>
 
-  <maintainer email="nowak@locomotec.com">Walter Nowak</maintainer>
-  <maintainer email="blumenthal@locomotec.com">Sebastian Blumenthal</maintainer>
+  <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <license>GPLv3</license>
+  <depend>rclpy</depend>
+  <depend>gazebo_ros</depend>
+  <depend>youbot_description</depend>
+  <depend>ros2_control</depend>
 
-  <url type="website">http://github.com/mas-group/youbot_simulation</url> -->
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
 
-  <author email="frederik.hegger@h-brs.de">Frederik Hegger</author>
-
-  <buildtool_depend>catkin</buildtool_depend>
-
-  <run_depend>gazebo_ros</run_depend>
-
-  <test_depend>roslaunch</test_depend>
-
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
 </package>

@@ -1,0 +1,7 @@
+<?xml version='1.0' ?>
+<launch>
+  <!-- Publish URDF file in robot_description topic -->
+  <include file="$(find-pkg-share youbot_description)/launch/youbot_description.launch.py"/>
+  <!-- Read robot_description an spawn in gazebo running sim -->
+  <include file="$(find-pkg-share youbot_gazebo_robot)/launch/spawn_youbot_description.launch.py"/>
+</launch>

@@ -1,22 +1,35 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.8)
 project(youbot_gazebo_robot)
-find_package(catkin REQUIRED)
 
-catkin_package(
-  CATKIN_DEPENDS
-    gazebo_ros
-    robot_state_publisher
-    youbot_gazebo_control
-    youbot_gazebo_worlds
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
+# find dependencies
+find_package(ament_cmake REQUIRED)
+find_package(rclpy REQUIRED)
+find_package(gazebo_ros REQUIRED)
+find_package(youbot_description REQUIRED)
+find_package(ros2_control REQUIRED)
+
+if(BUILD_TESTING)
+  find_package(ament_lint_auto REQUIRED)
+  # the following line skips the linter which checks for copyrights
+  # comment the line when a copyright and license is added to all source files
+  set(ament_cmake_copyright_FOUND TRUE)
+  # the following line skips cpplint (only works in a git repo)
+  # comment the line when this package is in a git repo and when
+  # a copyright and license is added to all source files
+  set(ament_cmake_cpplint_FOUND TRUE)
+  ament_lint_auto_find_test_dependencies()
+endif()
+
+install(
+  DIRECTORY
+    launch
+  DESTINATION
+    share/${PROJECT_NAME}/
 )
 
 
-### TESTS
-if(CATKIN_ENABLE_TESTING)
-  find_package(roslaunch REQUIRED)
-
-  roslaunch_add_file_check(launch)
-endif()
-
-### INSTALLS
-install(DIRECTORY launch/ DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch)
+ament_package()
